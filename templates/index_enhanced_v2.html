@@ -447,6 +447,7 @@
             gap: 6px;
             text-align: center;
             min-width: 200px;
+            position: relative;
         }
 
         .doc-link-btn:hover {
@@ -455,6 +456,96 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             color: white;
             text-decoration: none;
+        }
+
+        /* Documentation Dropdown Menu */
+        .doc-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .doc-dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(20px);
+            min-width: 280px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 9999;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .doc-dropdown:hover .doc-dropdown-content {
+            display: block;
+            animation: dropdownFadeIn 0.3s ease;
+        }
+
+        @keyframes dropdownFadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .doc-dropdown-item {
+            display: block;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .doc-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .doc-dropdown-item:hover {
+            background: rgba(116, 185, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            transform: translateX(3px);
+        }
+
+        .doc-dropdown-item .icon {
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .doc-dropdown-item .text {
+            flex: 1;
+        }
+
+        .doc-dropdown-item .badge {
+            background: linear-gradient(135deg, #e17055, #d63031);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* Mobile responsive dropdown */
+        @media (max-width: 768px) {
+            .doc-dropdown-content {
+                min-width: 250px;
+                left: 0;
+                transform: none;
+                right: 0;
+            }
+            
+            .doc-dropdown:hover .doc-dropdown-content {
+                transform: none;
+            }
         }
 
         .developer-credit {
@@ -2407,6 +2498,17 @@
                 min-width: 180px;
             }
 
+            .doc-dropdown-content {
+                min-width: 240px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .doc-dropdown-item {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
             .developer-credit {
                 font-size: 11px;
                 margin-top: 20px;
@@ -2714,9 +2816,54 @@
             
             <!-- Documentation Link -->
             <div style="margin-top: 20px; text-align: center;">
-                <a href="/docs" class="doc-link-btn" target="_blank" title="View Complete Documentation" style="display: inline-block; text-align: center;">
-                    📚 Documentation & Development Journey
-                </a>
+                <div class="doc-dropdown">
+                    <a href="/docs" class="doc-link-btn" title="View Complete Documentation" style="display: inline-block; text-align: center;">
+                        📚 Documentation & Guides ▼
+                    </a>
+                    <div class="doc-dropdown-content">
+                        <a href="/docs" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🏠</span>
+                            <span class="text">Documentation Hub</span>
+                        </a>
+                        <a href="/docs/user-guide" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">👤</span>
+                            <span class="text">User Guide</span>
+                            <span class="badge">UPDATED</span>
+                        </a>
+                        <a href="/docs/windows-wsl" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🪟</span>
+                            <span class="text">Windows to WSL Setup</span>
+                            <span class="badge">NEW</span>
+                        </a>
+                        <a href="/docs/technical-report" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">⚙️</span>
+                            <span class="text">Technical Documentation</span>
+                        </a>
+                        <a href="/development-journey" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🚀</span>
+                            <span class="text">Development Journey</span>
+                        </a>
+                        <a href="/docs/project-report" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">📊</span>
+                            <span class="text">Project Report</span>
+                        </a>
+                        <a href="/api-docs" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🔌</span>
+                            <span class="text">API Reference</span>
+                            <span class="badge">NEW</span>
+                        </a>
+                        <a href="/docs/changelog" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">📈</span>
+                            <span class="text">Visual Changelog</span>
+                            <span class="badge">NEW</span>
+                        </a>
+                        <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🐙</span>
+                            <span class="text">GitHub Repository</span>
+                            <span class="badge">NEW</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             
             <!-- Developer Credit -->
@@ -2732,9 +2879,45 @@
         <div class="app-header">
             <div class="header-left">
                 <div class="app-title">🚀 SCP Web Transfer</div>
-                <a href="/docs" class="doc-link-btn" target="_blank" title="View Documentation">
-                    📚 Docs
-                </a>
+                <div class="doc-dropdown">
+                    <a href="/docs" class="doc-link-btn" title="View Documentation">
+                        📚 Docs ▼
+                    </a>
+                    <div class="doc-dropdown-content">
+                        <a href="/docs" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🏠</span>
+                            <span class="text">Documentation Hub</span>
+                        </a>
+                        <a href="/docs/user-guide" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">👤</span>
+                            <span class="text">User Guide</span>
+                        </a>
+                        <a href="/docs/windows-wsl" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🪟</span>
+                            <span class="text">Windows WSL Setup</span>
+                        </a>
+                        <a href="/docs/technical-report" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">⚙️</span>
+                            <span class="text">Technical Docs</span>
+                        </a>
+                        <a href="/development-journey" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🚀</span>
+                            <span class="text">Dev Journey</span>
+                        </a>
+                        <a href="/docs/project-report" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">📊</span>
+                            <span class="text">Project Report</span>
+                        </a>
+                        <a href="/api-docs" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🔌</span>
+                            <span class="text">API Reference</span>
+                        </a>
+                        <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal" class="doc-dropdown-item" target="_blank">
+                            <span class="icon">🐙</span>
+                            <span class="text">GitHub Repo</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             
             <div class="header-center">
