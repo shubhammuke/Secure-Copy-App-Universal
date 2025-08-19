@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Secure Copy App Universal - Documentation Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+            margin: 10px 5px;
+        }
+
+        .github-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #24292e, #1a1e22);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(36, 41, 46, 0.3);
+            margin: 10px 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .github-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(36, 41, 46, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .doc-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        .doc-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .doc-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .doc-card .icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .doc-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .doc-card .features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .doc-card .features li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .doc-card .features li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .doc-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+        }
+
+        .doc-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(116, 185, 255, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .new-badge {
+            background: linear-gradient(135deg, #e17055, #d63031);
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .quick-links {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .quick-links h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link {
+            display: block;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quick-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer .developer-info {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer .tech-stack {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .changelog-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .changelog-section h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .changelog-item {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00b894;
+        }
+
+        .changelog-item h3 {
+            color: #00b894;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .changelog-item .date {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .changelog-item ul {
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 20px;
+        }
+
+        .changelog-item li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .docs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .doc-card {
+                padding: 20px;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📚 Secure Copy App Universal</h1>
+            <p class="subtitle">Complete Documentation & Development Hub</p>
+            <div>
+                <span class="version-badge">🚀 Version 2.0.0</span>
+                <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal" class="github-badge" target="_blank">
+                    🐙 GitHub Repository
+                </a>
+            </div>
+        </div>
+
+        <!-- What's New Section -->
+        <div class="changelog-section">
+            <h2>🆕 What's New in v2.0 - August 19, 2025</h2>
+            <div class="changelog-item">
+                <h3>🛑 Transfer Cancellation System</h3>
+                <div class="date">Released Today - Major Feature Update</div>
+                <ul>
+                    <li>✅ <strong>Immediate Cancellation</strong> - Cancel transfers instantly with API integration</li>
+                    <li>✅ <strong>Stuck Detection</strong> - Automatic detection of transfers with no progress for 2+ minutes</li>
+                    <li>✅ <strong>Enhanced Monitoring</strong> - More responsive progress updates (200ms intervals)</li>
+                    <li>✅ <strong>Better Error Handling</strong> - Clear distinction between cancellation and actual errors</li>
+                    <li>✅ <strong>Proper Cleanup</strong> - Complete cleanup of resources and connection state</li>
+                </ul>
+            </div>
+            <div class="changelog-item">
+                <h3>🐙 GitHub Integration</h3>
+                <div class="date">Released Today - Open Source Launch</div>
+                <ul>
+                    <li>✅ <strong>Public Repository</strong> - Now available on GitHub for community contributions</li>
+                    <li>✅ <strong>CI/CD Pipeline</strong> - Automated testing with GitHub Actions</li>
+                    <li>✅ <strong>Issue Templates</strong> - Professional bug reports and feature requests</li>
+                    <li>✅ <strong>Contributing Guidelines</strong> - Complete developer onboarding documentation</li>
+                    <li>✅ <strong>Security Scanning</strong> - Automated vulnerability detection</li>
+                </ul>
+            </div>
+            <div class="changelog-item">
+                <h3>🪟 Windows to WSL Support</h3>
+                <div class="date">Enhanced Today - Cross-Platform Excellence</div>
+                <ul>
+                    <li>✅ <strong>WSL Integration</strong> - Seamless Windows to WSL file transfers</li>
+                    <li>✅ <strong>PowerShell Scripts</strong> - Professional Windows setup automation</li>
+                    <li>✅ <strong>Batch Files</strong> - One-click Windows deployment</li>
+                    <li>✅ <strong>Network Configuration</strong> - Automatic port forwarding and SSH setup</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Documentation Grid -->
+        <div class="docs-grid">
+            <!-- User Guide -->
+            <div class="doc-card" onclick="window.open('user_guide.html', '_blank')">
+                <h3>
+                    <span class="icon">👤</span>
+                    User Guide
+                    <span class="new-badge">UPDATED</span>
+                </h3>
+                <p>Complete user manual with step-by-step instructions for all features including the new cancellation system.</p>
+                <ul class="features">
+                    <li>Getting started with authentication</li>
+                    <li>File transfer operations</li>
+                    <li>Transfer cancellation guide</li>
+                    <li>Windows to WSL setup</li>
+                    <li>Troubleshooting common issues</li>
+                </ul>
+                <a href="user_guide.html" class="doc-link" target="_blank">📖 Read User Guide</a>
+            </div>
+
+            <!-- Technical Report -->
+            <div class="doc-card" onclick="window.open('TECHNICAL_REPORT.html', '_blank')">
+                <h3>
+                    <span class="icon">⚙️</span>
+                    Technical Documentation
+                    <span class="new-badge">UPDATED</span>
+                </h3>
+                <p>In-depth technical analysis, architecture details, and implementation specifics for developers.</p>
+                <ul class="features">
+                    <li>System architecture overview</li>
+                    <li>Cancellation system implementation</li>
+                    <li>Security mechanisms</li>
+                    <li>Performance optimizations</li>
+                    <li>API endpoint specifications</li>
+                </ul>
+                <a href="TECHNICAL_REPORT.html" class="doc-link" target="_blank">🔧 View Technical Docs</a>
+            </div>
+
+            <!-- Development Journey -->
+            <div class="doc-card" onclick="window.open('DEVELOPMENT_JOURNEY_VISUAL.html', '_blank')">
+                <h3>
+                    <span class="icon">🚀</span>
+                    Development Journey
+                    <span class="new-badge">UPDATED</span>
+                </h3>
+                <p>Visual timeline of the development process, challenges overcome, and solutions implemented.</p>
+                <ul class="features">
+                    <li>Project evolution timeline</li>
+                    <li>Challenge resolution stories</li>
+                    <li>Feature development process</li>
+                    <li>GitHub integration journey</li>
+                    <li>Community contribution setup</li>
+                </ul>
+                <a href="DEVELOPMENT_JOURNEY_VISUAL.html" class="doc-link" target="_blank">📈 Explore Journey</a>
+            </div>
+
+            <!-- Project Report -->
+            <div class="doc-card" onclick="window.open('PROJECT_REPORT.html', '_blank')">
+                <h3>
+                    <span class="icon">📊</span>
+                    Project Report
+                    <span class="new-badge">UPDATED</span>
+                </h3>
+                <p>Comprehensive project overview, features, achievements, and future roadmap.</p>
+                <ul class="features">
+                    <li>Project scope and objectives</li>
+                    <li>Feature implementation status</li>
+                    <li>Performance metrics</li>
+                    <li>GitHub repository statistics</li>
+                    <li>Future enhancement plans</li>
+                </ul>
+                <a href="PROJECT_REPORT.html" class="doc-link" target="_blank">📋 View Report</a>
+            </div>
+
+            <!-- API Documentation -->
+            <div class="doc-card" onclick="window.open('../API_DOCUMENTATION.md', '_blank')">
+                <h3>
+                    <span class="icon">🔌</span>
+                    API Reference
+                    <span class="new-badge">NEW</span>
+                </h3>
+                <p>Complete API documentation with all 25+ endpoints, examples, and integration guides.</p>
+                <ul class="features">
+                    <li>Authentication endpoints</li>
+                    <li>File operation APIs</li>
+                    <li>Transfer management</li>
+                    <li>Cancellation endpoints</li>
+                    <li>System monitoring APIs</li>
+                </ul>
+                <a href="../API_DOCUMENTATION.md" class="doc-link" target="_blank">🔗 API Docs</a>
+            </div>
+
+            <!-- Windows WSL Guide -->
+            <div class="doc-card" onclick="window.open('WINDOWS_WSL_GUIDE.html', '_blank')">
+                <h3>
+                    <span class="icon">🪟</span>
+                    Windows to WSL Guide
+                    <span class="new-badge">NEW</span>
+                </h3>
+                <p>Complete setup guide for using the application with Windows Subsystem for Linux (WSL).</p>
+                <ul class="features">
+                    <li>WSL SSH server configuration</li>
+                    <li>Windows application setup</li>
+                    <li>Network configuration guide</li>
+                    <li>Troubleshooting common issues</li>
+                    <li>Advanced SSH key setup</li>
+                </ul>
+                <a href="WINDOWS_WSL_GUIDE.html" class="doc-link" target="_blank">🪟 WSL Setup</a>
+            </div>
+
+            <!-- GitHub Documentation -->
+            <div class="doc-card" onclick="window.open('https://github.com/shubhammuke/Secure-Copy-App-Universal', '_blank')">
+                <h3>
+                    <span class="icon">🐙</span>
+                    GitHub Repository
+                    <span class="new-badge">NEW</span>
+                </h3>
+                <p>Open source repository with complete codebase, issues, and community contributions.</p>
+                <ul class="features">
+                    <li>Complete source code</li>
+                    <li>Issue tracking system</li>
+                    <li>Pull request workflow</li>
+                    <li>CI/CD pipeline</li>
+                    <li>Community contributions</li>
+                </ul>
+                <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal" class="doc-link" target="_blank">🌟 Visit GitHub</a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <h2>🔗 Quick Access Links</h2>
+            <div class="links-grid">
+                <a href="../README.md" class="quick-link" target="_blank">📄 README</a>
+                <a href="../CHANGELOG.md" class="quick-link" target="_blank">📝 Changelog</a>
+                <a href="CHANGELOG_VISUAL.html" class="quick-link" target="_blank">📈 Visual Timeline</a>
+                <a href="../CONTRIBUTING.md" class="quick-link" target="_blank">🤝 Contributing</a>
+                <a href="../DEPLOYMENT_GUIDE.md" class="quick-link" target="_blank">🚀 Deployment</a>
+                <a href="../GIT_DOCUMENTATION.md" class="quick-link" target="_blank">📋 Git Workflow</a>
+                <a href="../WINDOWS_SETUP.md" class="quick-link" target="_blank">🪟 Windows Setup</a>
+                <a href="WINDOWS_WSL_GUIDE.html" class="quick-link" target="_blank">🪟 Windows WSL</a>
+                <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal/issues" class="quick-link" target="_blank">🐛 Report Issues</a>
+                <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal/discussions" class="quick-link" target="_blank">💬 Discussions</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="developer-info">
+                <strong>Developed by Shubham Muke</strong> | Enhanced by Amazon Q
+            </div>
+            <div class="tech-stack">
+                Built with Python Flask, JavaScript, HTML5, CSS3 | Secured with SSH/SCP Protocol
+            </div>
+            <div style="margin-top: 15px; font-size: 0.9rem;">
+                🌟 <strong>Open Source</strong> | 🔒 <strong>Secure</strong> | 🌐 <strong>Cross-Platform</strong> | 🛑 <strong>Cancellable Transfers</strong>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for cards
+            const cards = document.querySelectorAll('.doc-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add version info
+            console.log('📚 Secure Copy App Universal Documentation Hub v2.0');
+            console.log('🚀 GitHub: https://github.com/shubhammuke/Secure-Copy-App-Universal');
+            console.log('👨‍💻 Developer: Shubham Muke');
+        });
+    </script>
+</body>
+</html>

@@ -2802,22 +2802,57 @@ def protection_guide():
 @app.route('/docs')
 def documentation_index():
     """Serve documentation index page"""
-    return send_from_directory('.', 'DOCUMENTATION_INDEX.html')
+    return send_from_directory('Doc', 'DOCUMENTATION_INDEX.html')
+
+@app.route('/docs/user-guide')
+def user_guide():
+    """Serve user guide documentation"""
+    return send_from_directory('Doc', 'user_guide.html')
+
+@app.route('/docs/technical-report')
+def technical_report():
+    """Serve technical report documentation"""
+    return send_from_directory('Doc', 'TECHNICAL_REPORT.html')
+
+@app.route('/docs/project-report')
+def project_report():
+    """Serve project report documentation"""
+    return send_from_directory('Doc', 'PROJECT_REPORT.html')
 
 @app.route('/development-journey')
 def development_journey():
     """Serve visual development journey documentation"""
-    return send_from_directory('.', 'DEVELOPMENT_JOURNEY_VISUAL.html')
+    return send_from_directory('Doc', 'DEVELOPMENT_JOURNEY_VISUAL.html')
 
-@app.route('/DEVELOPMENT_LOG.md')
-def development_log():
-    """Serve development log markdown file"""
-    return send_from_directory('.', 'DEVELOPMENT_LOG.md', mimetype='text/plain')
+@app.route('/api-docs')
+def api_documentation():
+    """Serve API documentation"""
+    return send_from_directory('.', 'API_DOCUMENTATION.md', mimetype='text/plain')
 
-@app.route('/DEVELOPMENT_TIMELINE.md')
-def development_timeline():
-    """Serve development timeline markdown file"""
-    return send_from_directory('.', 'DEVELOPMENT_TIMELINE.md', mimetype='text/plain')
+@app.route('/changelog')
+def changelog():
+    """Serve changelog"""
+    return send_from_directory('.', 'CHANGELOG.md', mimetype='text/plain')
+
+@app.route('/contributing')
+def contributing():
+    """Serve contributing guidelines"""
+    return send_from_directory('.', 'CONTRIBUTING.md', mimetype='text/plain')
+
+@app.route('/deployment')
+def deployment_guide():
+    """Serve deployment guide"""
+    return send_from_directory('.', 'DEPLOYMENT_GUIDE.md', mimetype='text/plain')
+
+@app.route('/docs/windows-wsl')
+def windows_wsl_guide():
+    """Serve Windows to WSL setup guide"""
+    return send_from_directory('Doc', 'WINDOWS_WSL_GUIDE.html')
+
+@app.route('/docs/changelog')
+def visual_changelog():
+    """Serve visual changelog"""
+    return send_from_directory('Doc', 'CHANGELOG_VISUAL.html')
 
 @app.route('/TECHNICAL_ARCHITECTURE.md')
 def technical_architecture():

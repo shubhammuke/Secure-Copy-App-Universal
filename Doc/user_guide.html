@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📖 Secure Copy App Universal v2.0 - User Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin: 20px 0 10px 0;
+        }
+
+        .step-list {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .step-list ol {
+            margin-left: 20px;
+        }
+
+        .step-list li {
+            margin-bottom: 10px;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #1dd1a1 0%, #10ac84 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .code-snippet {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #5a67d8;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 SCP Web Transfer - User Guide</h1>
+            <p>Complete guide to using the secure file transfer application</p>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Getting Started</h2>
+            <div class="feature-box">
+                <h3>✨ What is SCP Web Transfer?</h3>
+                <p>A secure, web-based file transfer application that allows you to transfer files between your local computer and remote servers using SSH/SCP protocol through a beautiful Windows 7 Aero-themed interface.</p>
+            </div>
+
+            <h3>📱 Accessing the Application</h3>
+            <div class="step-list">
+                <ol>
+                    <li>Open your web browser</li>
+                    <li>Navigate to: <code>http://localhost:5000</code></li>
+                    <li>The application will load with the login interface</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔐 Authentication Methods</h2>
+            
+            <h3>🔑 Password Authentication</h3>
+            <div class="step-list">
+                <ol>
+                    <li>Click on the "Password" tab</li>
+                    <li>Enter your server details:
+                        <ul>
+                            <li><strong>Server Host:</strong> IP address or hostname</li>
+                            <li><strong>Port:</strong> SSH port (usually 22)</li>
+                            <li><strong>Username:</strong> Your server username</li>
+                            <li><strong>Password:</strong> Your server password</li>
+                        </ul>
+                    </li>
+                    <li>Click "🔗 Test Connection" to verify</li>
+                    <li>Click "🔗 Connect" to establish connection</li>
+                </ol>
+            </div>
+
+            <h3>🗝️ SSH Key Authentication</h3>
+            <div class="step-list">
+                <ol>
+                    <li>Click on the "SSH Key" tab</li>
+                    <li>Enter server details (Host, Port, Username)</li>
+                    <li>Upload your SSH private key:
+                        <ul>
+                            <li><strong>Click to upload:</strong> Click the upload area</li>
+                            <li><strong>Drag & drop:</strong> Drag your key file to the upload area</li>
+                        </ul>
+                    </li>
+                    <li>Supported formats: .pem, .ppk, .key, RSA, DSA, ECDSA, Ed25519</li>
+                    <li>Click "🔗 Test Connection" and then "🔗 Connect"</li>
+                </ol>
+            </div>
+
+            <div class="success-box">
+                <strong>💡 Pro Tip:</strong> SSH key authentication is more secure than password authentication and is recommended for production use.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📁 File Management</h2>
+            
+            <h3>🖥️ Interface Layout</h3>
+            <div class="feature-box">
+                <ul>
+                    <li><strong>Left Panel:</strong> Local files (your computer)</li>
+                    <li><strong>Right Panel:</strong> Remote files (connected server)</li>
+                    <li><strong>Navigation:</strong> Breadcrumb paths and navigation buttons</li>
+                    <li><strong>File Operations:</strong> Upload, download, create, delete, rename</li>
+                </ul>
+            </div>
+
+            <h3>🧭 Navigation</h3>
+            <div class="step-list">
+                <ul>
+                    <li><strong>Click folder name:</strong> Navigate into directory</li>
+                    <li><strong>Back button:</strong> Go to previous directory</li>
+                    <li><strong>Up button:</strong> Go to parent directory</li>
+                    <li><strong>Home button:</strong> Go to home directory</li>
+                    <li><strong>Root button:</strong> Go to root directory</li>
+                    <li><strong>Refresh button:</strong> Reload current directory</li>
+                </ul>
+            </div>
+
+            <h3>📂 File Selection</h3>
+            <div class="step-list">
+                <ul>
+                    <li><strong>Single click:</strong> Select one file</li>
+                    <li><strong>Ctrl+Click:</strong> Select multiple files</li>
+                    <li><strong>Right-click folder:</strong> Select entire folder</li>
+                    <li><strong>Shift+Click:</strong> Select range of files</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⬆️⬇️ File Transfer</h2>
+            
+            <h3>📤 Upload Files (Local → Remote)</h3>
+            <div class="step-list">
+                <ol>
+                    <li>Select files in the left panel (local)</li>
+                    <li>Navigate to destination in right panel (remote)</li>
+                    <li>Click "⬆️ Upload to Remote" button</li>
+                    <li>Watch the progress bar for transfer status</li>
+                </ol>
+            </div>
+
+            <h3>📥 Download Files (Remote → Local)</h3>
+            <div class="step-list">
+                <ol>
+                    <li>Select files in the right panel (remote)</li>
+                    <li>Navigate to destination in left panel (local)</li>
+                    <li>Click "⬇️ Download to Local" button</li>
+                    <li>Monitor transfer progress</li>
+                </ol>
+            </div>
+
+            <h3>🎯 Drag & Drop Transfer</h3>
+            <div class="feature-box">
+                <ul>
+                    <li><strong>Local to Remote:</strong> Drag files from left panel to right panel</li>
+                    <li><strong>Remote to Local:</strong> Drag files from right panel to left panel</li>
+                    <li><strong>Visual Feedback:</strong> Drop zones highlight when dragging</li>
+                    <li><strong>Batch Transfer:</strong> Select multiple files and drag together</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💾 Credential Management</h2>
+            
+            <h3>💿 Saving Credentials</h3>
+            <div class="step-list">
+                <ol>
+                    <li>After successful connection, check "💾 Save credentials"</li>
+                    <li>Enter a memorable name for the connection</li>
+                    <li>Credentials are encrypted and stored securely</li>
+                </ol>
+            </div>
+
+            <h3>📋 Loading Saved Credentials</h3>
+            <div class="step-list">
+                <ol>
+                    <li>Click "📋 Show Saved Credentials"</li>
+                    <li>Click "📋 Load" next to desired connection</li>
+                    <li>Credentials auto-fill in the form</li>
+                    <li>Click "🔗 Connect" to establish connection</li>
+                </ol>
+            </div>
+
+            <div class="success-box">
+                <strong>🔒 Security:</strong> All credentials are encrypted using Fernet encryption before storage.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🛡️ Security Features</h2>
+            
+            <h3>🚫 Root Directory Protection</h3>
+            <div class="warning-box">
+                <strong>⚠️ Important:</strong> File operations (create, delete, rename) are restricted in system directories for safety:
+                <ul>
+                    <li>Root directory (/)</li>
+                    <li>System directories (/bin, /etc, /usr, /var, etc.)</li>
+                </ul>
+                <p>Navigate to /home or other user directories for file operations.</p>
+            </div>
+
+            <h3>🔐 Connection Security</h3>
+            <div class="feature-box">
+                <ul>
+                    <li><strong>SSH Protocol:</strong> All connections use secure SSH/SFTP</li>
+                    <li><strong>Keep-Alive:</strong> Automatic connection monitoring</li>
+                    <li><strong>Auto-Reconnect:</strong> Handles network interruptions</li>
+                    <li><strong>Session Management:</strong> Secure session handling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧪 Troubleshooting</h2>
+            
+            <h3>🔌 Connection Issues</h3>
+            <div class="step-list">
+                <ul>
+                    <li>Verify server IP address and SSH port</li>
+                    <li>Check if SSH service is running on the server</li>
+                    <li>Confirm firewall settings allow SSH connections</li>
+                    <li>Test with command-line SSH first</li>
+                </ul>
+            </div>
+
+            <h3>🗝️ SSH Key Issues</h3>
+            <div class="step-list">
+                <ul>
+                    <li>Ensure key file is in correct format</li>
+                    <li>Check key permissions (should be 600)</li>
+                    <li>Verify public key is in server's authorized_keys</li>
+                    <li>Try different key formats if needed</li>
+                </ul>
+            </div>
+
+            <h3>📁 Transfer Issues</h3>
+            <div class="step-list">
+                <ul>
+                    <li>Check available disk space</li>
+                    <li>Verify file permissions</li>
+                    <li>Ensure stable network connection</li>
+                    <li>Try smaller files first</li>
+                </ul>
+            </div>
+
+            <div class="success-box">
+                <strong>🔍 Debug Tools:</strong> Use the debug tools at <a href="/ssh-debug" style="color: white; text-decoration: underline;">/ssh-debug</a> for advanced troubleshooting.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⌨️ Keyboard Shortcuts</h2>
+            <div class="feature-box">
+                <ul>
+                    <li><strong>Ctrl+A:</strong> Select all files</li>
+                    <li><strong>Ctrl+Click:</strong> Multi-select files</li>
+                    <li><strong>F5:</strong> Refresh current directory</li>
+                    <li><strong>Enter:</strong> Navigate into selected folder</li>
+                    <li><strong>Backspace:</strong> Go to parent directory</li>
+                    <li><strong>Delete:</strong> Delete selected files</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="/docs" class="back-link">← Back to Documentation Hub</a>
+    </div>
+</body>
+</html>

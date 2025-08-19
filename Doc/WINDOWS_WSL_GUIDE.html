@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪟 Windows to WSL Setup Guide - Secure Copy App Universal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border-left: 4px solid #667eea;
+        }
+
+        .code-block .comment {
+            color: #68d391;
+        }
+
+        .step-box {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border: 1px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #00b894;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #74b9ff;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+
+        .feature-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🪟 Windows to WSL Setup Guide</h1>
+            <p class="subtitle">Complete guide for using Secure Copy App Universal with Windows Subsystem for Linux</p>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Overview</h2>
+            <p>This guide will help you set up and use the Secure Copy App Universal to transfer files between your Windows system and Windows Subsystem for Linux (WSL). This is perfect for developers who work with both Windows and Linux environments.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🚀</div>
+                    <h4>Easy Setup</h4>
+                    <p>One-command installation with automated scripts</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h4>Secure Transfer</h4>
+                    <p>SSH/SCP protocol with encryption</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🛑</div>
+                    <h4>Cancellable</h4>
+                    <p>New v2.0 transfer cancellation system</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌐</div>
+                    <h4>Web Interface</h4>
+                    <p>Beautiful browser-based file manager</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Prerequisites</h2>
+            <ul>
+                <li><strong>Windows 10/11</strong> with WSL installed</li>
+                <li><strong>Python 3.6+</strong> installed on Windows</li>
+                <li><strong>WSL Distribution</strong> (Ubuntu recommended)</li>
+                <li><strong>Modern Web Browser</strong> (Chrome, Firefox, Edge)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Step 1: Enable SSH in WSL</h2>
+            
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <h3>Install and Configure SSH Server</h3>
+                <p>First, you need to enable SSH server in your WSL distribution:</p>
+                
+                <div class="code-block">
+<span class="comment"># Open WSL terminal and run these commands</span>
+sudo apt update
+sudo apt install openssh-server
+
+<span class="comment"># Start SSH service</span>
+sudo service ssh start
+
+<span class="comment"># Enable SSH to start automatically</span>
+sudo systemctl enable ssh
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <h3>Configure SSH (Optional)</h3>
+                <p>For better security, you can configure SSH settings:</p>
+                
+                <div class="code-block">
+<span class="comment"># Edit SSH configuration</span>
+sudo nano /etc/ssh/sshd_config
+
+<span class="comment"># Restart SSH service after changes</span>
+sudo service ssh restart
+
+<span class="comment"># Check SSH is running</span>
+sudo service ssh status
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <h3>Get WSL IP Address</h3>
+                <p>Find your WSL IP address for connection:</p>
+                
+                <div class="code-block">
+<span class="comment"># Get WSL IP address</span>
+ip addr show eth0
+
+<span class="comment"># Or use hostname command</span>
+hostname -I
+                </div>
+                
+                <div class="info-box">
+                    <strong>📝 Note:</strong> WSL 2 uses a dynamic IP address that changes on restart. WSL 1 typically uses localhost (127.0.0.1).
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Step 2: Install Secure Copy App Universal on Windows</h2>
+            
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <h3>Download and Extract</h3>
+                <p>Get the application from GitHub:</p>
+                
+                <div class="code-block">
+<span class="comment"># Clone from GitHub</span>
+git clone https://github.com/shubhammuke/Secure-Copy-App-Universal.git
+cd Secure-Copy-App-Universal
+
+<span class="comment"># Or download and extract ZIP file</span>
+<span class="comment"># Extract to: C:\Secure-Copy-App-Universal</span>
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <h3>Choose Installation Method</h3>
+                
+                <h4>🎯 Method 1: Batch File (Easiest)</h4>
+                <div class="code-block">
+<span class="comment"># Double-click or run in Command Prompt</span>
+start.bat
+                </div>
+
+                <h4>🎯 Method 2: PowerShell Script</h4>
+                <div class="code-block">
+<span class="comment"># Run in PowerShell as Administrator</span>
+powershell -ExecutionPolicy Bypass -File start.ps1
+                </div>
+
+                <h4>🎯 Method 3: Manual Installation</h4>
+                <div class="code-block">
+<span class="comment"># Install dependencies</span>
+pip install -r requirements.txt
+
+<span class="comment"># Start application</span>
+python app_enhanced.py
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Success!</strong> The application will automatically find an available port (5000, 5001, 5002, 8000, 8080, 8888, or 9000) and display the URL.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌐 Step 3: Connect to WSL</h2>
+            
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <h3>Open Web Interface</h3>
+                <p>Navigate to the displayed URL in your browser:</p>
+                <div class="code-block">
+http://localhost:5000
+<span class="comment"># Or whatever port was assigned</span>
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <h3>Enter WSL Connection Details</h3>
+                <ul>
+                    <li><strong>Server IP:</strong> Use the WSL IP address (e.g., 172.x.x.x) or localhost</li>
+                    <li><strong>Port:</strong> 22 (default SSH port)</li>
+                    <li><strong>Username:</strong> Your WSL username</li>
+                    <li><strong>Password:</strong> Your WSL user password</li>
+                </ul>
+                
+                <div class="info-box">
+                    <strong>💡 Tip:</strong> Click "Test Connection" before connecting to verify your settings.
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <h3>Start Transferring Files</h3>
+                <p>Once connected, you can:</p>
+                <ul>
+                    <li><strong>Left Panel:</strong> Browse Windows files</li>
+                    <li><strong>Right Panel:</strong> Browse WSL filesystem</li>
+                    <li><strong>Upload to WSL:</strong> Select Windows files → Click "⬆️ Upload to Remote"</li>
+                    <li><strong>Download from WSL:</strong> Select WSL files → Click "⬇️ Download to Local"</li>
+                    <li><strong>Cancel Transfers:</strong> Use the new "❌ Cancel Transfer" button if needed</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Advanced Configuration</h2>
+            
+            <h3>🌐 Port Forwarding (Alternative Method)</h3>
+            <p>If direct IP access doesn't work, you can use port forwarding:</p>
+            
+            <div class="code-block">
+<span class="comment"># In WSL - Start SSH service</span>
+sudo service ssh start
+
+<span class="comment"># In Windows PowerShell (as Administrator)</span>
+netsh interface portproxy add v4tov4 listenport=2222 listenaddress=0.0.0.0 connectport=22 connectaddress=172.x.x.x
+            </div>
+            
+            <p>Then connect using <code>localhost:2222</code> in the application.</p>
+
+            <h3>🔑 SSH Key Authentication</h3>
+            <p>For better security, use SSH keys:</p>
+            
+            <div class="code-block">
+<span class="comment"># In WSL - Generate SSH key pair</span>
+ssh-keygen -t rsa -b 4096
+
+<span class="comment"># Add public key to authorized_keys</span>
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+            </div>
+            
+            <p>Then in the web app, upload the private key file (<code>id_rsa</code>) for authentication.</p>
+
+            <h3>🔄 Auto-Start SSH Service</h3>
+            <p>To automatically start SSH when WSL boots:</p>
+            
+            <div class="code-block">
+<span class="comment"># Add to ~/.bashrc</span>
+echo "sudo service ssh start" >> ~/.bashrc
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Troubleshooting</h2>
+            
+            <h3>🔍 Connection Issues</h3>
+            <div class="warning-box">
+                <strong>Problem:</strong> Cannot connect to WSL
+                <br><strong>Solution:</strong>
+                <div class="code-block">
+<span class="comment"># Test SSH connectivity from Windows</span>
+ssh username@wsl-ip-address
+
+<span class="comment"># Check if SSH is listening in WSL</span>
+sudo netstat -tlnp | grep :22
+                </div>
+            </div>
+
+            <h3>🔥 Firewall Issues</h3>
+            <div class="warning-box">
+                <strong>Problem:</strong> Windows Firewall blocking connections
+                <br><strong>Solution:</strong>
+                <div class="code-block">
+<span class="comment"># In Windows PowerShell (as Administrator)</span>
+New-NetFirewallRule -DisplayName "SCP App" -Direction Inbound -Port 5000 -Protocol TCP -Action Allow
+                </div>
+            </div>
+
+            <h3>🌐 Common WSL Network Addresses</h3>
+            <ul>
+                <li><strong>WSL 1:</strong> Usually <code>127.0.0.1</code> (localhost)</li>
+                <li><strong>WSL 2:</strong> Dynamic IP in <code>172.x.x.x</code> range (check with <code>hostname -I</code>)</li>
+            </ul>
+
+            <h3>🛑 Transfer Issues</h3>
+            <div class="success-box">
+                <strong>✨ New in v2.0:</strong> Use the cancel button or wait for automatic stuck transfer detection if transfers get stuck!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎉 What's New in v2.0</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🛑</div>
+                    <h4>Transfer Cancellation</h4>
+                    <p>Cancel transfers instantly with the new cancel button</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔍</div>
+                    <h4>Stuck Detection</h4>
+                    <p>Automatic detection of transfers with no progress</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h4>Enhanced Monitoring</h4>
+                    <p>More responsive progress updates (200ms intervals)</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🐙</div>
+                    <h4>GitHub Integration</h4>
+                    <p>Now open source with community contributions</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📞 Support</h2>
+            <p>Need help? Here are your options:</p>
+            <ul>
+                <li>📚 <strong>Documentation:</strong> Check the complete documentation hub</li>
+                <li>🐛 <strong>Issues:</strong> Report bugs on <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal/issues" target="_blank">GitHub Issues</a></li>
+                <li>💬 <strong>Discussions:</strong> Join <a href="https://github.com/shubhammuke/Secure-Copy-App-Universal/discussions" target="_blank">GitHub Discussions</a></li>
+                <li>📧 <strong>Email:</strong> Contact the developer directly</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="DOCUMENTATION_INDEX.html" class="back-link">📚 Back to Documentation Hub</a>
+        </div>
+    </div>
+</body>
+</html>
