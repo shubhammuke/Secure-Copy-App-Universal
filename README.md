@@ -405,7 +405,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **📚 Documentation**: Check the comprehensive HTML documentation
 - **🐛 Issues**: Report bugs via [GitHub Issues](https://github.com/yourusername/macos-to-linux-servers-scp/issues)
 - **💬 Discussions**: Join [GitHub Discussions](https://github.com/yourusername/macos-to-linux-servers-scp/discussions)
-- **📧 Email**: your-email@example.com
+- **📧 Email**: shubhammuke@gmail.com
 
 ### **Quick Links**
 - **🌟 Star the Project**: If you find this useful, please star the repository
