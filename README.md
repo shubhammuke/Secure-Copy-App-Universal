@@ -436,9 +436,9 @@ The major highlight of this release is the comprehensive transfer cancellation s
 
 <div align="center">
 
-**🌟 MacOS to Linux Servers SCP - Making secure file transfers beautiful, reliable, and cancellable!**
+**🌟 Any OS to Linux Servers SCP - Making secure file transfers beautiful, reliable, and cancellable!**
 
-*Developed with ❤️ for seamless macOS to Linux server file management*
+*Developed with ❤️ for seamless Server file management*
 
 **[⬆️ Back to Top](#-macos-to-linux-servers-scp)**
 
