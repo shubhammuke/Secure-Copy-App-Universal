@@ -1,4 +1,4 @@
-# 🚀 MacOS to Linux Servers SCP
+# 🚀 From Any OS to Linux Servers SCP
 
 <div align="center">
 
@@ -18,7 +18,7 @@
 
 ## 🎯 Overview
 
-MacOS to Linux Servers SCP is a modern, web-based file transfer application designed for seamless and secure file transfers between macOS clients and Linux servers using the SCP (Secure Copy Protocol) over SSH. 
+Any OS to Linux Servers SCP is a modern, web-based file transfer application designed for seamless and secure file transfers between clients and Linux servers using the SCP (Secure Copy Protocol) over SSH. 
 
 ### 🆕 **Version 2.0 - Transfer Cancellation System**
 
@@ -405,7 +405,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **📚 Documentation**: Check the comprehensive HTML documentation
 - **🐛 Issues**: Report bugs via [GitHub Issues](https://github.com/yourusername/macos-to-linux-servers-scp/issues)
 - **💬 Discussions**: Join [GitHub Discussions](https://github.com/yourusername/macos-to-linux-servers-scp/discussions)
-- **📧 Email**: your-email@example.com
+- **📧 Email**: shubhammuke@gmail.com
 
 ### **Quick Links**
 - **🌟 Star the Project**: If you find this useful, please star the repository
@@ -436,9 +436,9 @@ The major highlight of this release is the comprehensive transfer cancellation s
 
 <div align="center">
 
-**🌟 MacOS to Linux Servers SCP - Making secure file transfers beautiful, reliable, and cancellable!**
+**🌟 Any OS to Linux Servers SCP - Making secure file transfers beautiful, reliable, and cancellable!**
 
-*Developed with ❤️ for seamless macOS to Linux server file management*
+*Developed with ❤️ for seamless Server file management*
 
 **[⬆️ Back to Top](#-macos-to-linux-servers-scp)**
 
