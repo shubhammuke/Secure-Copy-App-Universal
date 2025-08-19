@@ -2854,6 +2854,21 @@ def visual_changelog():
     """Serve visual changelog"""
     return send_from_directory('Doc', 'CHANGELOG_VISUAL.html')
 
+@app.route('/git-docs')
+def git_documentation():
+    """Serve Git documentation"""
+    return send_from_directory('.', 'GIT_DOCUMENTATION.md', mimetype='text/plain')
+
+@app.route('/windows-setup')
+def windows_setup():
+    """Serve Windows setup guide"""
+    return send_from_directory('.', 'WINDOWS_SETUP.md', mimetype='text/plain')
+
+@app.route('/readme')
+def readme():
+    """Serve README file"""
+    return send_from_directory('.', 'README.md', mimetype='text/plain')
+
 @app.route('/TECHNICAL_ARCHITECTURE.md')
 def technical_architecture():
     """Serve technical architecture markdown file"""
@@ -2863,11 +2878,6 @@ def technical_architecture():
 def user_guide_html():
     """Serve user guide HTML file"""
     return send_from_directory('.', 'user_guide.html')
-
-@app.route('/README.md')
-def readme():
-    """Serve README markdown file"""
-    return send_from_directory('.', 'README.md', mimetype='text/plain')
 
 @app.route('/test-root-protection.js')
 def test_root_protection_js():
