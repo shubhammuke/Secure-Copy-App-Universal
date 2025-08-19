@@ -18,7 +18,7 @@
 
 ## 🎯 Overview
 
-MacOS to Linux Servers SCP is a modern, web-based file transfer application designed for seamless and secure file transfers between macOS clients and Linux servers using the SCP (Secure Copy Protocol) over SSH. 
+Any OS to Linux Servers SCP is a modern, web-based file transfer application designed for seamless and secure file transfers between clients and Linux servers using the SCP (Secure Copy Protocol) over SSH. 
 
 ### 🆕 **Version 2.0 - Transfer Cancellation System**
 
