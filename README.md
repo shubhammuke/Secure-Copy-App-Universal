@@ -1,4 +1,4 @@
-# 🚀 MacOS to Linux Servers SCP
+# 🚀 From Any OS to Linux Servers SCP
 
 <div align="center">
 
