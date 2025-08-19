@@ -1,80 +1,118 @@
 @echo off
-title SCP Web Transfer - Enhanced Version
-color 0A
+REM Secure Copy App Universal v2.0 - Windows Batch Launcher
+REM Simple alternative to PowerShell script
+
+title Secure Copy App Universal v2.0
 
 echo.
 echo ======================================================================
-echo 🚀 SCP Web Transfer - Enhanced Version Starting
+echo 🚀 Secure Copy App Universal v2.0 - Starting Up
 echo ======================================================================
+echo.
+echo ✨ Features: Transfer Cancellation ^| Windows WSL ^| GitHub Integration
 echo.
 
 REM Check if Python is installed
 python --version >nul 2>&1
 if errorlevel 1 (
     echo ❌ Python is not installed or not in PATH
-    echo Please install Python 3.6+ from https://python.org
+    echo.
+    echo 💡 To fix this:
+    echo    1. Download Python from https://python.org/downloads/
+    echo    2. During installation, check 'Add Python to PATH'
+    echo    3. Restart Command Prompt after installation
     echo.
     pause
     exit /b 1
 )
+
+REM Get Python version
+for /f "tokens=2" %%i in ('python --version 2^>^&1') do set PYTHON_VERSION=%%i
+echo ✅ Python found: %PYTHON_VERSION%
 
 REM Check if pip is available
 pip --version >nul 2>&1
 if errorlevel 1 (
     echo ❌ pip is not available
-    echo Please ensure pip is installed with Python
+    echo 💡 pip should be included with Python 3.4+
     echo.
     pause
     exit /b 1
 )
 
-echo ✅ Python detected
+echo ✅ pip is available
+
+REM Check if we're in the right directory
+if not exist "app_enhanced.py" (
+    echo ❌ app_enhanced.py not found
+    echo 💡 Make sure you're running this from the project directory
+    echo.
+    pause
+    exit /b 1
+)
+
+if not exist "requirements.txt" (
+    echo ❌ requirements.txt not found
+    echo 💡 Make sure you're running this from the project directory
+    echo.
+    pause
+    exit /b 1
+)
+
 echo.
 
-REM Install requirements if they don't exist
+REM Create virtual environment if it doesn't exist
 if not exist "venv" (
     echo 📦 Creating virtual environment...
     python -m venv venv
     if errorlevel 1 (
         echo ❌ Failed to create virtual environment
+        echo 💡 Try running as Administrator
+        echo.
         pause
         exit /b 1
     )
+    echo ✅ Virtual environment created
+) else (
+    echo ✅ Virtual environment already exists
 )
 
+REM Activate virtual environment
 echo 🔧 Activating virtual environment...
-call venv\Scripts\activate.bat
+if exist "venv\Scripts\activate.bat" (
+    call venv\Scripts\activate.bat
+    echo ✅ Virtual environment activated
+) else (
+    echo ⚠️  Virtual environment activation failed, continuing anyway...
+)
 
-echo 📦 Installing/updating requirements...
+REM Install requirements
+echo 📦 Installing/updating Python packages...
 pip install -r requirements.txt >nul 2>&1
 if errorlevel 1 (
-    echo ❌ Failed to install requirements
-    pause
-    exit /b 1
-)
-
-echo.
-
-REM Check if port is provided as argument
-if "%1"=="" (
-    echo 🌐 Starting with interactive port selection...
-    python app_enhanced.py
+    echo ⚠️  Some packages may have issues, but continuing...
 ) else (
-    echo 🌐 Starting on specified port %1...
-    python app_enhanced.py %1
-)
-
-if errorlevel 1 (
-    echo.
-    echo ❌ Failed to start server
-    echo 💡 Common solutions:
-    echo    - Try running as Administrator
-    echo    - Check if antivirus is blocking Python
-    echo    - Ensure no other applications are using the port
-    echo.
+    echo ✅ All packages installed successfully
 )
 
 echo.
-echo 🛑 Server stopped
-echo 👋 Thank you for using SCP Web Transfer!
+echo ======================================================================
+echo 🌐 STARTING SECURE COPY APP UNIVERSAL
+echo ======================================================================
+echo.
+echo 🚀 Starting with interactive port selection...
+echo 💡 The application will automatically find an available port
+echo.
+
+REM Start the application
+python app_enhanced.py
+
+echo.
+echo ======================================================================
+echo 🛑 Secure Copy App Universal Stopped
+echo ======================================================================
+echo.
+echo 🙏 Thank you for using Secure Copy App Universal v2.0!
+echo 🌟 Star us on GitHub: https://github.com/shubhammuke/Secure-Copy-App-Universal
+echo.
 pause
